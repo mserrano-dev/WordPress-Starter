@@ -1,1 +1,1 @@
-# seed-jquery-sass-wordpress
+# WordPress Starter Theme
