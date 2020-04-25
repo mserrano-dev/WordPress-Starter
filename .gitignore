@@ -3,6 +3,8 @@
 # /dir/* ....will match all files, directories and anything else inside 
 #            a directory named dir (but not the dir directory itself).
 node_modules/
+vendor/
+yarn-error.log
 .vscode
 .DS_Store
 

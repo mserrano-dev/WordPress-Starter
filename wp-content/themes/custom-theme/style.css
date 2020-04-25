@@ -1,0 +1,17 @@
+/*!
+Theme Name: WordPress Starter Theme
+Author: mserrano-dev
+Author URI: https://github.com/mserrano-dev/WordPress-Starter
+Description: WordPress Starter Theme by Mark Anthony Serrano
+Version: 0.0.0
+*/
+
+/*
+	Source scss styles are located in the _dev directory.
+	The compiled bundle is in assets/_app-styles.min.css; The README.md
+	file contains instructions how to get the compilation
+	process up & running.
+
+	If you need to make a quick fix, feel free to add CSS
+	below this comment. It will override _app-styles.min.css styles.
+*/

@@ -1,0 +1,24 @@
+# BEGIN WordPress
+# The directives (lines) between `BEGIN WordPress` and `END WordPress` are
+# dynamically generated, and should only be modified via WordPress filters.
+# Any changes to the directives between these markers will be overwritten.
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+
+# END WordPress
+
+# DEV NOTE on local setup: 
+#   1. add yourself to the Apache group (www-data)
+#      > $ sudo usermod -a -G www-data $USER
+#   2. logout or reboot. confirm part of www-data
+#      > $ groups
+#   3. change each project file's group to the Apache group
+#      > $ sudo chgrp -R www-data .
+
+# TROUBLESHOOT: try changing a permalinks setting and saving to flush
