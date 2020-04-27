@@ -20,5 +20,8 @@ RewriteRule . /index.php [L]
 #      > $ groups
 #   3. change each project file's group to the Apache group
 #      > $ sudo chgrp -R www-data .
+#   4. give write group permissions when necessary
+#      > $ sudo chmod 664 .htaccess
 
-# TROUBLESHOOT: try changing a permalinks setting and saving to flush
+# TROUBLESHOOT: ..try changing a permalinks setting and saving to flush
+#               ..check that your Apache conf has AllowOverride All

@@ -1,0 +1,18 @@
+{
+  "scripts": {
+    "filename": "_app-scripts.min.js",
+    "entry": "_dev/main.ts"
+  },
+  "styles": {
+    "filename": "_app-styles.min.css",
+    "entry": "_dev/main.scss"
+  },
+  "admin-scripts": {
+    "filename": "_admin-scripts.min.js",
+    "entry": "_dev/admin.ts"
+  },
+  "admin-styles": {
+    "filename": "_admin-styles.min.css",
+    "entry": "_dev/admin.scss"
+  }
+}

@@ -21,5 +21,5 @@ wp-content/*
 # keep dir "wp-content/themes" but ignore everything inside it
 !wp-content/themes/
 wp-content/themes/*
-# keep dir "wp-content/themes/custom-theme" as well as everything inside it
-!wp-content/themes/custom-theme/
+# keep dir "wp-content/themes/src"
+!wp-content/themes/src/
