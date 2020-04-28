@@ -4,6 +4,7 @@
 #            a directory named dir (but not the dir directory itself).
 node_modules/
 vendor/
+.env
 yarn-error.log
 .vscode
 .DS_Store

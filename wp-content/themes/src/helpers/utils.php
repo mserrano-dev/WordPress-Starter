@@ -15,6 +15,15 @@ function meta_data($meta_key, $id = null)
   return $return;
 }
 
+function meta_image($meta_key, $id = null)
+{
+  $image_id = meta_data($meta_key, $id);
+  if ($image_id === null) {
+    $image_id = $meta_key;
+  }
+  return wp_get_attachment_url($image_id);
+}
+
 function get_page_id()
 {
   global $wp_query;

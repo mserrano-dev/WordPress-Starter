@@ -1,9 +1,9 @@
+/* !! THIS FILE IS AUTO-GENERATED, ANY CHANGES WILL BE OVERWRITTEN !! */
+
 /*!
-Theme Name: WordPress Starter Theme
-Author: mserrano-dev
-Author URI: https://github.com/mserrano-dev/WordPress-Starter
-Description: WordPress Starter Theme by Mark Anthony Serrano
-Version: 0.0.0
+Theme Name: %_VERSION_% - %_NAME_%
+Author: %_AUTHOR_%
+Version: %_VERSION_%
 */
 
 /*
@@ -12,6 +12,9 @@ Version: 0.0.0
 	file contains instructions how to get the compilation
 	process up & running.
 
-	If you need to make a quick fix, feel free to add CSS
-	below this comment. It will override _app-styles.min.css styles.
+
+	DO NOT PLACE HOT FIXES HERE, use assets/_app-styles-override.css
+
 */
+
+/* !! THIS FILE IS AUTO-GENERATED, ANY CHANGES WILL BE OVERWRITTEN !! */

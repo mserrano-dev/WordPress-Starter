@@ -22,5 +22,6 @@
       "mobile-menu": "Mobile Menu",
       "footer-menu": "Footer"
     }
-  }
+  },
+  "dev_vhost": "http://dev-wordpress.local/"
 }
