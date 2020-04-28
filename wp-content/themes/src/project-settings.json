@@ -14,5 +14,13 @@
   "admin-styles": {
     "filename": "_admin-styles.min.css",
     "entry": "_dev/admin.scss"
+  },
+  "wordpress": {
+    "menu-display-location": {
+      "header-menu": "Header",
+      "sidebar-menu": "Sidebar",
+      "mobile-menu": "Mobile Menu",
+      "footer-menu": "Footer"
+    }
   }
 }

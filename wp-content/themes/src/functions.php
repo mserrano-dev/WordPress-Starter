@@ -13,7 +13,7 @@ function load_frontend_assets()
 }
 add_action('wp_enqueue_scripts', 'load_frontend_assets');
 
-# Enqueue (admin) JS and CSS assets
+# Enqueue (admin dashboard) JS and CSS assets
 function load_admin_assets()
 {
 	wp_enqueue_script('admin-scripts', ASSET_DIR . PROJECT['admin-scripts']['filename']);
@@ -21,6 +21,9 @@ function load_admin_assets()
 }
 add_action('admin_enqueue_scripts', 'load_admin_assets');
 add_action('login_enqueue_scripts', 'load_admin_assets');
+// -- also load frontend assets so we can have a live preview in the Style Guide
+add_action('admin_enqueue_scripts', 'load_frontend_assets');
+add_action('login_enqueue_scripts', 'load_frontend_assets');
 
 # Add Dashicons
 function load_dashicons()
@@ -37,7 +40,7 @@ function attach_post_types_and_taxonomies()
 }
 add_action('init', 'attach_post_types_and_taxonomies', 0);
 
-# Theme init
+# Load theme php files and init vendor code
 function setup_custom_theme()
 {
 	# Autoload composer dependencies
@@ -47,6 +50,9 @@ function setup_custom_theme()
 	}
 	include($composer_deps);
 	\Carbon_Fields\Carbon_Fields::boot();
+
+	# Register Theme Menu Locations
+	register_nav_menus(PROJECT['wordpress']['menu-display-location']);
 
 	# Load up our helper files
 	$path = THEME_DIR . 'helpers/*.php';
@@ -58,10 +64,12 @@ function setup_custom_theme()
 
 	# Attach other custom Theme Options
 	add_action('carbon_fields_register_fields', 'attach_theme_options');
-	function attach_theme_options()
-	{
-		$path = THEME_DIR . 'options/*.php';
-		foreach (glob($path) as $filename) include_once $filename;
-	}
 }
+
+function attach_theme_options()
+{
+	$path = THEME_DIR . 'options/*.php';
+	foreach (glob($path) as $filename) include_once $filename;
+}
+
 add_action('after_setup_theme', 'setup_custom_theme');
