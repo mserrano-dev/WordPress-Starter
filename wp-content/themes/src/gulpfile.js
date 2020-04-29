@@ -24,7 +24,8 @@ function init_browserSync(done) {
     open: 'external',
     files: [
       './assets/' + project.scripts.filename, 
-      './assets/' + project.styles.filename
+      './assets/' + project.styles.filename,
+      '**/*.php'
     ],
     snippetOptions: {
       rule: {

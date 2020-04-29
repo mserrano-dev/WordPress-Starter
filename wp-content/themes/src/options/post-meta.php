@@ -50,3 +50,26 @@ Container::make('post_meta', 'Style Guide')
   ->add_tab('Shortcodes', generate_shortcode_listing(
     'year'
   ));
+
+/*
+ * --- Template Settings ---
+ */
+// Redirect
+Container::make('post_meta', 'Template Settings')
+  ->where('post_template', '=', 'templates/redirect.php')
+  ->add_fields(array(
+    Field::make('multiselect', 'acl', 'Access Control List')
+      ->set_default_value(true)
+      ->add_options(array(
+        'admin'       => 'Admin',
+        'editor'      => 'Editor',
+        'author'      => 'Author',
+        'contributor' => 'Contributor',
+        'subscriber'  => 'Subscriber',
+      ))
+      ->help_text('Leave blank to always redirect.')
+      ->set_width(40),
+    Field::make('text', 'redirect_url', 'Redirect URL')
+      ->help_text('https://www.example.com/')
+      ->set_width(60),
+  ));
