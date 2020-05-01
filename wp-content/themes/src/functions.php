@@ -21,9 +21,6 @@ function load_admin_assets()
 }
 add_action('admin_enqueue_scripts', 'load_admin_assets');
 add_action('login_enqueue_scripts', 'load_admin_assets');
-// -- also load frontend assets so we can have a live preview in the Style Guide
-add_action('admin_enqueue_scripts', 'load_frontend_assets');
-add_action('login_enqueue_scripts', 'load_frontend_assets');
 
 # Add Dashicons
 function load_dashicons()
@@ -55,12 +52,10 @@ function setup_custom_theme()
 	register_nav_menus(PROJECT['wordpress']['menu-display-location']);
 
 	# Load up our helper files
-	$path = THEME_DIR . 'helpers/*.php';
-	foreach (glob($path) as $filename) include $filename;
+	load_php_recursive(THEME_DIR . 'helpers');
 
 	# Load any REST endpoints
-	$path = THEME_DIR . 'endpoints/*.php';
-	foreach (glob($path) as $filename) include $filename;
+	load_php_recursive(THEME_DIR . 'endpoints');
 
 	# Attach other custom Theme Options
 	add_action('carbon_fields_register_fields', 'attach_theme_options');
@@ -68,8 +63,18 @@ function setup_custom_theme()
 
 function attach_theme_options()
 {
-	$path = THEME_DIR . 'options/*.php';
-	foreach (glob($path) as $filename) include_once $filename;
+	load_php_recursive(THEME_DIR . 'options');
+}
+
+function load_php_recursive($dir)
+{
+	// We support loading subdirectories
+	$globbed = array(
+		'files'    => array_filter(glob($dir . '/*.php'), 'is_file'),
+		'subdirs'  => glob($dir . '/*', GLOB_ONLYDIR),
+	);
+	foreach ($globbed['files'] as $file) include_once($file);
+	foreach ($globbed['subdirs'] as $subdir) load_php_recursive($subdir);
 }
 
 add_action('after_setup_theme', 'setup_custom_theme');
