@@ -1,16 +1,29 @@
 {
   "type": "project",
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org"
+    },
+    {
+      "type": "composer",
+      "url": "https://packagist.org"
+    }
+  ],
   "require": {
     "htmlburger/carbon-fields": "^3.1.2",
     "htmlburger/carbon-fragment": "1.0.*",
-    "yoast/wordpress-seo": "^13.5"
+    "wpackagist-plugin/akismet": "*",
+    "wpackagist-plugin/do-spaces-sync": "*"
   },
   "require-dev": {
     "htmlburger/carbon-debug": "1.0.*"
   },
   "extra": {
     "installer-paths": {
-      "../../plugins/{$name}/": ["type:wordpress-plugin"]
+      "wp-content/plugins/{$name}/": [
+        "type:wordpress-plugin"
+      ]
     }
   }
 }
