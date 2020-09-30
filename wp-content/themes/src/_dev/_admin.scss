@@ -1,0 +1,56 @@
+@import "modules/**/*.scss";
+
+/* --- Optional --- */
+/* CarbonField 'association' */
+.association--tall .cf-association__cols {
+  min-height: 400px;
+
+  .cf-association__col {
+    max-height: 600px;
+  }
+}
+.association--single .cf-association__cols {
+  height: 50px;
+}
+
+/* --- NOT Optional --- */
+/* CarbonField 'association' */
+.cf-association__cols .cf-association__option:hover {
+  background: rgba(0,0,0,0.025);
+}
+/* CarbonField 'file' */
+.cf-file__inner {
+  min-width: 50% !important;
+}
+/* taxonomy */
+.taxonomy-framework,
+.taxonomy-language,
+.taxonomy-deployment,
+.taxonomy-software,
+.taxonomy-workplace {
+  #edittag {
+    max-width: unset;
+  }
+}
+
+/* --- Admin Menu Mods --- */
+/* remove dates from post type 'traits' */
+.post-type-trait {
+  #post-query-submit,
+  #filter-by-date,
+  .misc-pub-curtime,
+  .column-date {
+    display: none;
+  }
+}
+
+/* Login Page */
+#login {
+  h1 a {
+    background-image: url('../assets/images/helicopter-scw.png');
+    background-size: contain;
+    width: auto;
+    height: 120px;
+    margin: 0;
+  }
+}

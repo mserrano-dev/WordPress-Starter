@@ -1,5 +1,7 @@
 # WordPress Starter Theme
 
+##### /wp-json needs to have Permalink Settings > Common Settings set to 'Post name' (not 'Plain')
+
 ##### example Apache2 conf for a basic local WordPress install
 ```
 <VirtualHost *:80>

@@ -1,14 +1,15 @@
 <?php
+define('ROOT_DIR', ABSPATH);
 define('THEME_DIR', dirname(__FILE__) . DIRECTORY_SEPARATOR);
 define('ASSET_DIR', get_template_directory_uri() . DIRECTORY_SEPARATOR . 'assets' . DIRECTORY_SEPARATOR);
-define('PROJECT', json_decode(file_get_contents(THEME_DIR . 'project-settings.json'), true));
+define('PROJECT', json_decode(file_get_contents(ROOT_DIR . 'project-settings.json'), true));
 
 # Enqueue (frontend) JS and CSS assets
 function load_frontend_assets()
 {
-	wp_enqueue_script('app-scripts', ASSET_DIR . PROJECT['scripts']['filename']);
+	wp_enqueue_script('app-scripts', ASSET_DIR . PROJECT['entry']['main'] . '.min.js');
 	wp_enqueue_script('app-scripts-override', ASSET_DIR . '_app-override-scripts.js');
-	wp_enqueue_style('app-styles', ASSET_DIR . PROJECT['styles']['filename']);
+	wp_enqueue_style('app-styles', ASSET_DIR . PROJECT['entry']['main'] . '.min.css');
 	wp_enqueue_style('app-styles-override', ASSET_DIR . '_app-override-styles.css');
 }
 add_action('wp_enqueue_scripts', 'load_frontend_assets');
@@ -16,8 +17,12 @@ add_action('wp_enqueue_scripts', 'load_frontend_assets');
 # Enqueue (admin dashboard) JS and CSS assets
 function load_admin_assets()
 {
-	wp_enqueue_script('admin-scripts', ASSET_DIR . PROJECT['admin-scripts']['filename']);
-	wp_enqueue_style('admin-styles', ASSET_DIR . PROJECT['admin-styles']['filename']);
+	wp_enqueue_script('app-scripts', ASSET_DIR . PROJECT['entry']['admin'] . '.min.js');
+	wp_enqueue_style('app-styles', ASSET_DIR . PROJECT['entry']['admin'] . '.min.css');
+
+	// for REST API permission_callback
+	$wp_nonce = wp_create_nonce('wp_rest');
+	echo "<input id='rest_auth_nonce' type='hidden' name='rest_auth_nonce' value='$wp_nonce' />";
 }
 add_action('admin_enqueue_scripts', 'load_admin_assets');
 add_action('login_enqueue_scripts', 'load_admin_assets');
@@ -32,8 +37,8 @@ add_action('wp_enqueue_scripts', 'load_dashicons');
 # Attach custom Post Types/Taxonomies
 function attach_post_types_and_taxonomies()
 {
-	include(THEME_DIR . 'options/_post-types.php');
-	include(THEME_DIR . 'options/_taxonomies.php');
+	include(THEME_DIR . 'options/post-types.php');
+	include(THEME_DIR . 'options/taxonomies.php');
 }
 add_action('init', 'attach_post_types_and_taxonomies', 0);
 
@@ -41,7 +46,7 @@ add_action('init', 'attach_post_types_and_taxonomies', 0);
 function setup_custom_theme()
 {
 	# Autoload composer dependencies
-	$composer_deps = THEME_DIR . 'vendor/autoload.php';
+	$composer_deps = ROOT_DIR . 'vendor/autoload.php';
 	if (is_readable($composer_deps) === false) {
 		wp_die('Please, run <code>composer install</code> to download and install the theme dependencies.');
 	}

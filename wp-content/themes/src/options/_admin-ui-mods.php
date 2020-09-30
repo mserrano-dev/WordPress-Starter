@@ -30,3 +30,6 @@ function additional_admin_color_schemes()
     );
 }
 add_action('admin_init', 'additional_admin_color_schemes');
+
+// dont allow wordpress to scale images
+add_filter('big_image_size_threshold', '__return_false');
