@@ -3,22 +3,16 @@
 # /dir/* ....will match all files, directories and anything else inside 
 #            a directory named dir (but not the dir directory itself).
 node_modules/
-vendor/
 .env
 yarn-error.log
-.vscode
 .DS_Store
 
-# ignore all default WordPress files and version control our custom-theme only
-/wp-*
-/index.php
-/license.txt
-/readme.html
-/xmlrpc.php
+# ignore config file
+/wp-config.php
 
-# keep the dir "wp-content" but ignore everything inside it
-!wp-content/
+# keep the dir "wp-content" but ignore everything inside it except plugins
 wp-content/*
+!wp-content/plugins/
 # keep dir "wp-content/themes" but ignore everything inside it
 !wp-content/themes/
 wp-content/themes/*
