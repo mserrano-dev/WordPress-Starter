@@ -21,11 +21,12 @@
 ##### define a .env file (see .env.default)
 > $ yarn install
 
-| Command       | Result                                                                      |
-| :------------ | :---------------------------------------------------------------------------|
-| $ yarn git    | will add your creds to .git/config, as defined by .env variables            |
-| $ yarn dev    | will watch for changes in the src folder, recompile & do a live reload      |
-| $ yarn build  | will minimize the bundled files                                             |
-| $ yarn deploy | duplicates theme directory with dynamically created WordPress meta info*    |
+| Command         | Result                                                                      |
+| :---------------| :---------------------------------------------------------------------------|
+| $ yarn git      | will add your creds to .git/config, as defined by .env variables            |
+| $ yarn dev      | will watch for changes in the src folder, recompile & do a live reload      |
+| $ yarn build    | will minimize the bundled files                                             |
+| $ yarn deploy   | duplicates theme directory with dynamically created WordPress meta info*    |
+| $ yarn updateWP | updates WordPress installation to the latest version                        |
 
 ###### *generated from package.json name, version and author
